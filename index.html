@@ -1,1 +1,54 @@
-<!doctype html><html><head><title>Subdomain takeover PoC</title></head><body><h1>SUBDOMAIN TAKEOVER PoC</h1><p>app.nightwither.de was dangling (CNAME -&gt; mrnightwither.github.io, unclaimed, domain unverified).</p><p>Claimed temporarily by shadow0striker0-ai for an authorized assessment. This will be released immediately.</p></body></html>
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>app.nightwither.de — Subdomain Takeover PoC (authorized)</title>
+<style>
+  :root{color-scheme:dark}
+  body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:#0b0b0d;color:#f2f2f2}
+  .banner{background:#b00020;color:#fff;font-weight:700;text-align:center;padding:.6rem 1rem;letter-spacing:.03em;font-size:.9rem}
+  .wrap{max-width:720px;margin:0 auto;padding:2rem 1.25rem}
+  h1{font-size:1.6rem;margin:.2rem 0 1rem}
+  .host{color:#ffb4c0;font-family:ui-monospace,Menlo,Consolas,monospace}
+  p{line-height:1.55;color:# d0d0d8}
+  .card{background:#151519;border:1px solid #2a2a30;border-radius:12px;padding:1.25rem;margin:1.25rem 0}
+  label{display:block;font-size:.85rem;margin:.6rem 0 .25rem;color:#a9a9b4}
+  input{width:100%;padding:.7rem .8rem;border-radius:8px;border:1px solid #33333c;background:#0e0e12;color:#fff;font-size:1rem;box-sizing:border-box}
+  button{margin-top:1rem;width:100%;padding:.8rem;border:0;border-radius:8px;background:#b00020;color:#fff;font-weight:700;font-size:1rem;cursor:pointer}
+  .note{font-size:.8rem;color:#8a8a95;margin-top:.75rem}
+  #warn{display:none;margin-top:1rem;padding:.9rem;border-radius:8px;background:#0f2e16;border:1px solid #1e5c2e;color:#bff5c9;font-size:.9rem}
+  code{background:#0e0e12;padding:.1rem .35rem;border-radius:5px;border:1px solid #2a2a30}
+</style>
+</head>
+<body>
+  <div class="banner">AUTHORIZED SECURITY RESEARCH — SUBDOMAIN TAKEOVER (PoC)</div>
+  <div class="wrap">
+    <h1><span class="host">app.nightwither.de</span></h1>
+    <p>This hostname is currently controlled by a third party because of a <strong>dangling CNAME</strong>
+       (<code>app.nightwither.de &rarr; mrnightwither.github.io</code>, unclaimed, apex domain not verified
+       in GitHub Pages). Any GitHub user can claim it.</p>
+
+    <div class="card">
+      <p style="margin-top:0"><strong>Impact demonstrated:</strong> a takeover lets an attacker impersonate
+         the brand on a trusted <code>*.nightwither.de</code> host — e.g. a convincing credential-harvest page
+         such as the (non-functional) one below.</p>
+      <label for="u">E-Mail</label>
+      <input id="u" type="email" placeholder="kunde@example.de" autocomplete="off">
+      <label for="p">Passwort</label>
+      <input id="p" type="password" placeholder="••••••••" autocomplete="off">
+      <button type="button" onclick="poof()">Anmelden</button>
+      <div id="warn">✅ This is a security PoC by an authorized tester. <strong>No credentials were
+        transmitted or stored.</strong> The form exists only to show how a real phishing page would look
+        on a hijacked brand subdomain.</div>
+      <p class="note">Reported by: authorized assessment (scope: FULL). Contact the site owner to remediate.</p>
+    </div>
+
+    <p class="note">Remediation: verify <code>nightwither.de</code> in GitHub → Settings → Pages and remove
+       or reclaim the <code>app</code> CNAME. See the attached report.</p>
+  </div>
+<script>
+function poof(){document.getElementById('warn').style.display='block';}
+</script>
+</body>
+</html>
